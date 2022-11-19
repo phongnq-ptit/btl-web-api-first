@@ -51,7 +51,7 @@ public class BookService implements IBookService {
       Optional<Books> book = bookRepo.findById(id);
 
       if (!book.isPresent()) {
-        return new ResponseObject<Books>("Khong tim thay sach", null);
+        return new ResponseObject<Books>("Không tìm thấy sách!!", null);
       }
 
       Images img = imageRepo.findByBookId(book.get().getId());
@@ -75,6 +75,11 @@ public class BookService implements IBookService {
       Optional<Categories> category = categoryRepo.findById(newBook.getCategoryId());
       if (!category.isPresent()) {
         return new ResponseObject<Books>("Thể loại không tồn tại!", null);
+      }
+
+      Optional<Books> checkTitle = Optional.ofNullable(bookRepo.findByTitle(newBook.getTitle()));
+      if (checkTitle.isPresent()) {
+        return new ResponseObject<Books>("Tiêu đề sách đã tồn tại!", null);
       }
 
       Books book = bookRepo.save(newBook);

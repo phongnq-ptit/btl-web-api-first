@@ -66,12 +66,6 @@ public class ImageService implements IImageService {
         return new ResponseObject<Images>("Ảnh không đúng định dạng!", null);
       }
 
-      // column bookId is unique
-      Optional<Images> checkUserId = Optional.ofNullable(imageRepo.findByBookId(bookId));
-      if (checkUserId.isPresent()) {
-        return new ResponseObject<Images>("Đã tồn tại bookId này!", null);
-      }
-
       Map img = cloudinary.uploader().upload(file, ObjectUtils.asMap("folder", "ltw"));
 
       Images newImage = new Images();
