@@ -73,6 +73,8 @@ public class ImageService implements IImageService {
       newImage.setPublicId(img.get("public_id").toString().split("/")[1]);
       newImage.setBookId(bookId);
 
+      file.delete();
+
       return new ResponseObject<Images>("Tải ảnh lên thành công!", imageRepo.save(newImage));
     } catch (Exception e) {
       return new ResponseObject<Images>(e.getMessage(), null);
