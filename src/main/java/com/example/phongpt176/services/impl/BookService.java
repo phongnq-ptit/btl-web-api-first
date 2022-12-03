@@ -79,7 +79,7 @@ public class BookService implements IBookService {
 
       Optional<Books> checkTitle = Optional.ofNullable(bookRepo.findByTitle(newBook.getTitle()));
       if (checkTitle.isPresent()) {
-        return new ResponseObject<Books>("Tiêu đề sách đã tồn tại!", null);
+        return new ResponseObject<Books>("Tiêu đề sách" + newBook.getTitle() + "đã tồn tại!", null);
       }
 
       Books book = bookRepo.save(newBook);
