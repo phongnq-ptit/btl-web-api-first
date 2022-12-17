@@ -2,6 +2,7 @@ package com.example.phongpt176.services.impl;
 
 import com.example.phongpt176.models.ResponseObject;
 import com.example.phongpt176.models.Users;
+import com.example.phongpt176.models.enums.UserRole;
 import com.example.phongpt176.repositories.UserRepo;
 import com.example.phongpt176.services.IUserService;
 import java.security.MessageDigest;
@@ -54,6 +55,7 @@ public class UserService implements IUserService {
       }
 
       user.setPassword(hashPassword(user.getPassword()));
+      user.setRole(UserRole.CLIENT);
 
       return new ResponseObject<Users>(
           "Đăng ký thành công!",

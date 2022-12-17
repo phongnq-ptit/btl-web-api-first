@@ -106,6 +106,7 @@ public class BookService implements IBookService {
             row.setDate(bookUpdate.getDate());
             row.setDescription(bookUpdate.getDescription());
             row.setPage(bookUpdate.getPage());
+            row.setPrice(bookUpdate.getPrice());
             row.setTitle(bookUpdate.getTitle());
             row.setCategoryId(bookUpdate.getCategoryId());
             return bookRepo.save(row);

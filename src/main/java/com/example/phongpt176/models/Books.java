@@ -23,6 +23,7 @@ public class Books {
   private String author;
   private String date;
   private int page;
+  private int price;
   private String description;
   private Long categoryId;
   @ManyToOne
@@ -35,13 +36,14 @@ public class Books {
   public Books() {
   }
 
-  public Books(Long id, String title, String author, String date, int page, String description,
+  public Books(Long id, String title, String author, String date, int page, int price, String description,
       Categories category, Images image) {
     this.id = id;
     this.title = title;
     this.author = author;
     this.date = date;
     this.page = page;
+    this.price = price;
     this.description = description;
     this.category = category;
     this.image = image;
@@ -119,5 +121,13 @@ public class Books {
   @JsonProperty
   public void setCategoryId(Long categoryId) {
     this.categoryId = categoryId;
+  }
+
+  public int getPrice() {
+    return price;
+  }
+
+  public void setPrice(int price) {
+    this.price = price;
   }
 }

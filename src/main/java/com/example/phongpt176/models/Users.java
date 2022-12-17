@@ -1,8 +1,12 @@
 package com.example.phongpt176.models;
 
+import com.example.phongpt176.models.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +22,10 @@ public class Users {
   private String email;
   private String password;
   private String name;
+
+  @Column(name = "role")
+  @Enumerated(EnumType.STRING)
+  private UserRole role;
 
   public Users() {
   }
@@ -61,5 +69,13 @@ public class Users {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public UserRole getRole() {
+    return role;
+  }
+
+  public void setRole(UserRole role) {
+    this.role = role;
   }
 }
