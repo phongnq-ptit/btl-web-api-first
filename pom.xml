@@ -45,6 +45,12 @@
       <groupId>org.flywaydb</groupId>
       <artifactId>flyway-mysql</artifactId>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.vladmihalcea/hibernate-types-52 -->
+    <dependency>
+      <groupId>com.vladmihalcea</groupId>
+      <artifactId>hibernate-types-52</artifactId>
+      <version>2.21.0</version>
+    </dependency>
     <!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary-http44 -->
     <dependency>
       <groupId>com.cloudinary</groupId>
