@@ -16,6 +16,7 @@ public class Comments {
   private Long bookId;
   private String comment;
   private int rate;
+  private String date;
 
   public Comments() {
   }
@@ -58,5 +59,13 @@ public class Comments {
 
   public void setRate(int rate) {
     this.rate = rate;
+  }
+
+  public String getDate() {
+    return date;
+  }
+
+  public void setDate(String date) {
+    this.date = date;
   }
 }

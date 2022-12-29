@@ -8,6 +8,7 @@ public class CommentDto {
   private Users user;
   private Books book;
   private String comment;
+  private String date;
   private int rate;
 
   public CommentDto() {
@@ -51,5 +52,13 @@ public class CommentDto {
 
   public void setRate(int rate) {
     this.rate = rate;
+  }
+
+  public String getDate() {
+    return date;
+  }
+
+  public void setDate(String date) {
+    this.date = date;
   }
 }

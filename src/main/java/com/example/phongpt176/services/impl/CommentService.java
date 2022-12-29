@@ -48,6 +48,7 @@ public class CommentService implements ICommentService {
             comment.setRate(row.getRate());
             comment.setComment(row.getComment());
             comment.setUser(user.get());
+            comment.setDate(row.getDate());
 
             result.add(comment);
             return row;
@@ -79,6 +80,7 @@ public class CommentService implements ICommentService {
       commentDto.setRate(comment.getRate());
       commentDto.setComment(comment.getComment());
       commentDto.setBook(book);
+      commentDto.setDate(comment.getDate());
 
       commentRepo.save(comment);
 
