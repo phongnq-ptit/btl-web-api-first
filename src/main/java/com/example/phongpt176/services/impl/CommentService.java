@@ -9,6 +9,7 @@ import com.example.phongpt176.repositories.CommentRepo;
 import com.example.phongpt176.repositories.UserRepo;
 import com.example.phongpt176.services.ICommentService;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,13 @@ public class CommentService implements ICommentService {
       Optional<Users> user = userRepo.findById(comment.getUserId());
       if (!user.isPresent()) {
         return new ResponseObject<CommentDto>("Không tồn tại user này!", null);
+      }
+
+      List<Comments> exists = commentRepo.findAllByBookIdAndUserId(
+          comment.getBookId(), comment.getUserId());
+
+      if (exists.size() > 0) {
+        return new ResponseObject<CommentDto>("Bạn đã đánh giá sản phẩm này rồi!", null);
       }
 
       Books book = bookService.get(comment.getBookId()).getData();
