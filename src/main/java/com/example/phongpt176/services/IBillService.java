@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public interface IBillService {
   ResponseObject<ArrayList<Bills>> getHistoryByUser(Long userId);
 
+  ResponseObject<ArrayList<Bills>> getAllBill();
+
   ResponseObject<Bills> createBill(BillDto billDto);
 
   ResponseObject<Bills> getBill(Long id);

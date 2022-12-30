@@ -27,8 +27,12 @@ public class BillController {
 
   @GetMapping()
   public ResponseEntity<ResponseObject<ArrayList<Bills>>> getHistoryByUser(
-      @RequestParam(name = "userId") String userId) {
-    return ResponseEntity.ok().body(billService.getHistoryByUser(Long.parseLong(userId)));
+      @RequestParam(name = "userId", defaultValue = "null") String userId) {
+    if (!userId.equals("null")) {
+      return ResponseEntity.ok().body(billService.getHistoryByUser(Long.parseLong(userId)));
+    } else {
+      return ResponseEntity.ok().body(billService.getAllBill());
+    }
   }
 
   @GetMapping("/{id}")

@@ -76,6 +76,38 @@ public class BillService implements IBillService {
   }
 
   @Override
+  public ResponseObject<ArrayList<Bills>> getAllBill() {
+    try {
+      ArrayList<Bills> bills = (ArrayList<Bills>) billRepo.findAll();
+
+      if (bills.size() > 0) {
+        for (Bills item: bills) {
+          Map<String, Object> listBooks = objectMapper.readValue(item.getListBooks(), Map.class);
+          ArrayList<Carts> tmp = new ArrayList<>();
+          item.setInfo(objectMapper.readValue(item.getUserInfo(), Map.class));
+
+          ArrayList<Integer> cartIds = (ArrayList<Integer>) listBooks.get("carts");
+
+          for (var cartId: cartIds) {
+            tmp.add(this.getCart(cartId.longValue()));
+          }
+          item.setListProducts(tmp);
+        }
+      }
+
+      return new ResponseObject<ArrayList<Bills>>(
+          "Lấy ra toàn bộ đơn hàng thành công!",
+          bills
+      );
+    } catch (Exception e) {
+      return new ResponseObject<ArrayList<Bills>>(
+          e.getMessage(),
+          null
+      );
+    }
+  }
+
+  @Override
   public ResponseObject<Bills> createBill(BillDto billDto) {
     try {
       objectMapper = new ObjectMapper();
